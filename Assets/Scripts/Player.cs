@@ -37,9 +37,9 @@ public class Player : MonoBehaviour
     private GameObject Child;
     
     //Level Variables
-    private bool level2 = false;
-    private bool level3 = false;
-    private bool levelF = false;
+    public bool level2 = false;
+    public bool level3 = false;
+    public bool levelF = false;
     
     #endregion
     void Start()
@@ -136,8 +136,8 @@ public class Player : MonoBehaviour
             UIMess.text = "Недостаточно денег!";
             return;
         }
-        if (hit.transform.gameObject.GetComponent<BowScript>().graded == true
-                 || hit.transform.gameObject.GetComponent<ArtScript>().graded == true)
+        if (hit.transform.gameObject.GetComponent<BowScript>().graded
+                 || hit.transform.gameObject.GetComponent<ArtScript>().graded)
         {
             UIMess.text = "Максимальный грейд";
             return;
@@ -188,6 +188,8 @@ public class Player : MonoBehaviour
         }
         else if (score == 3000 && !levelF)
         {
+            InvokeRepeating("CreateEnemy", 1, 1);
+            InvokeRepeating("CreateEnemy", 1, 1);
             InvokeRepeating("CreateEnemy", 1, 1);
             money += 500;
             levelF = true;
