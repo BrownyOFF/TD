@@ -9,10 +9,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Transform pointToGo;
     public float speed;
     [SerializeField] private Player Player;
+    private Vector2 localScale;
     
     void Start()
     {
-        
+        localScale = gameObject.transform.GetChild(0).gameObject.transform.localScale;
     }
 
     void Update()
@@ -23,12 +24,15 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+        
+        // HealthBar
+        localScale.x = (float)health/3;
+        gameObject.transform.GetChild(0).gameObject.transform.localScale = localScale;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Player.playerHealth -= 1;
-
         Destroy(gameObject);
     }
 

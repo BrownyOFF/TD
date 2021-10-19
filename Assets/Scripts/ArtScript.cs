@@ -11,6 +11,8 @@ public class ArtScript : MonoBehaviour
     private float currentTime = 0f;
     public float radius = 6f;
     public int damage = 2;
+    
+    public bool graded = false;
 
     public AudioSource fire;
     public AudioSource die;

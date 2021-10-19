@@ -12,6 +12,8 @@ public class BowScript : MonoBehaviour
     public float radius = 3f;
     public int damage = 1;
     
+    public bool graded = false;
+
     public AudioSource fire;
     public AudioSource die;
     private bool canShoot = true;
